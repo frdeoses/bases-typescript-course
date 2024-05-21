@@ -25,7 +25,11 @@
 
   //   const { poder, vision } = avengers;
 
-  const avengersArr: string[] = ['Capitan America', 'Ironman', 'Hulk'];
+  const avengersArr: [string, boolean, number] = [
+    'Capitan America',
+    true,
+    150.15,
+  ];
   const [capi, ironmann] = avengersArr;
 
   console.log({ ironmann, capi });
