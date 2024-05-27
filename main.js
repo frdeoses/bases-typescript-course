@@ -1,57 +1,89 @@
 "use strict";
-var __rest = (this && this.__rest) || function (s, e) {
-    var t = {};
-    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
-        t[p] = s[p];
-    if (s != null && typeof Object.getOwnPropertySymbols === "function")
-        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
-            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
-                t[p[i]] = s[p[i]];
+(() => {
+    class Mutante {
+        constructor(name, realname) {
+            this.name = name;
+            this.realname = realname;
         }
-    return t;
-};
-(() => {
-    const avengers = {
-        nick: 'Samuel L. jackson',
-        ironman: 'Robert jr ',
-        vision: 'Paul',
-        activos: true,
-        poder: 1555,
-    };
-    console.log(avengers);
-    const printAvenger = (_a) => {
-        var { ironman } = _a, resto = __rest(_a, ["ironman"]);
-        console.log(ironman);
-        console.log(resto);
-    };
-    printAvenger(avengers);
-    const avengersArr = [
-        'Capitan America',
-        true,
-        150.15,
-    ];
-    const [capi, ironmann] = avengersArr;
-    console.log({ ironmann, capi });
-})();
-(() => {
-    const ironman = {
-        name: 'ironman',
-        weapon: 'Armorsuit',
-    };
-    const capitanAmereica = {
-        name: 'Capitan America',
-        weapon: 'Shield',
-    };
-    const thor = {
-        name: 'Thor',
-        weapon: 'Mjolher',
-    };
-    const avengers = [ironman, capitanAmereica, thor];
-    for (const avenger of avengers) {
-        console.log(avenger.name, avenger.weapon);
     }
+    class Xmen extends Mutante {
+        salvarMundo() {
+            return 'Mundo salvado';
+        }
+    }
+    class Villain extends Mutante {
+        conquistarMundo() {
+            return 'Mundo conquistado';
+        }
+    }
+    const wolverine = new Xmen('Wolverine', 'Logan');
+    const magneto = new Villain('Magneto', 'Magnus');
+    const printName = (character) => {
+        console.log(character.realname);
+    };
+    printName(wolverine);
 })();
 (() => {
-    console.log('let');
+    class Avenger {
+        static getAvgAge() {
+            return this.name;
+        }
+        constructor(name, team, avgAge) {
+            this.name = name;
+            this.team = team;
+            Avenger.avgAge = avgAge;
+        }
+        bio() {
+            return ` ${this.name} (${this.team}) `;
+        }
+    }
+    Avenger.avgAge = 35;
+    const antMan = new Avenger('Antman', 'Capitan', 50);
+})();
+(() => {
+    class Avenger {
+        constructor(name, realname) {
+            this.name = name;
+            this.realname = realname;
+        }
+        getFullName() {
+            return `${this.name} ${this.realname} `;
+        }
+    }
+    class Xmen extends Avenger {
+        constructor(name, realname, isMutan) {
+            super(name, realname);
+            this.isMutan = isMutan;
+        }
+        get fullName() {
+            return `${this.name} - ${this.realname} `;
+        }
+        set fullName(name) {
+            this.name = name;
+        }
+    }
+    const wolverie = new Xmen('Wolvewrine', 'Logan', true);
+    wolverie.fullName = 'Fran';
+})();
+(() => {
+})();
+(() => {
+    class Apocalipsis {
+        constructor(name) {
+            this.name = name;
+        }
+        static callApocalipsis() {
+            if (!Apocalipsis.instance) {
+                Apocalipsis.instance = new Apocalipsis('Soy el unico apocalipsis...');
+            }
+            return Apocalipsis.instance;
+        }
+        changeName(name) {
+            this.name = name;
+        }
+    }
+    const apocalipsis = Apocalipsis.callApocalipsis();
+    const apocalipsis1 = Apocalipsis.callApocalipsis();
+    apocalipsis1.changeName('Fran');
 })();
 //# sourceMappingURL=main.js.map
